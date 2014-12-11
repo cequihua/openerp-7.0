@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    	<!-- <report 
+            auto="False"
+            id="balance_sheet_report"
+            menu="True"
+            model="wizard.balance.sheet"
+            name="balance.sheet"
+            rml="reports_account/report/balance_full_5_cols.rml"
+            string="Balance General"
+            header="False"/> -->
+
+            <report 
+            auto="False"
+            id="balance_sheet_report_mako"
+            menu="True"
+            model="wizard.balance.sheet"
+            name="balance.sheet.mako"
+            file="reports_account/report/balance_sheet_report.mako"
+            string="Balance General"
+            header="False"
+            report_type="webkit"/>
+
+            <report 
+            auto="False"
+            id="income_statement_report_mako"
+            menu="True"
+            model="wizard.income.statement"
+            name="income.statement.mako"
+            file="reports_account/report/income_statement_report.mako"
+            string="Estado de Resultados"
+            header="False"
+            report_type="webkit"/>
+    </data>
+</openerp>

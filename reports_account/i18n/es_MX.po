@@ -1,0 +1,420 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* reports_account
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-12-04 17:22+0000\n"
+"PO-Revision-Date: 2014-12-04 12:19-0600\n"
+"Last-Translator: Cesar equihua <cequihua@tantums.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: es_MX\n"
+
+#. module: reports_account
+#: model:ir.actions.act_window,name:reports_account.action_balance_sheet
+#: model:ir.actions.report.xml,name:reports_account.balance_sheet_report_mako
+#: model:ir.ui.menu,name:reports_account.submenu_balance_sheet_wizard
+msgid "Balance General"
+msgstr "Balance General"
+
+#. module: reports_account
+#: selection:wizard.balance.sheet,columns:0
+#: selection:wizard.income.statement,columns:0
+msgid "4 QTR's | YTD"
+msgstr "4 QTR's | YTD"
+
+#. module: reports_account
+#: selection:account.account,account_category:0
+msgid "Equity"
+msgstr "Capital"
+
+#. module: reports_account
+#: view:wizard.balance.sheet:0
+msgid "Reporte General"
+msgstr "Reporte General"
+
+#. module: reports_account
+#: selection:wizard.balance.sheet,display_account:0
+#: selection:wizard.income.statement,display_account:0
+msgid "With Balance / Movements"
+msgstr "Con Saldos / Movimientos"
+
+#. module: reports_account
+#: view:wizard.balance.sheet:0 view:wizard.income.statement:0
+msgid "Report Info"
+msgstr "Informacion Reporte"
+
+#. module: reports_account
+#: selection:account.account,account_category:0
+msgid "Asset"
+msgstr "Activo"
+
+#. module: reports_account
+#: selection:wizard.balance.sheet,columns:0
+#: selection:wizard.income.statement,columns:0
+msgid "Initial | Debit | Credit | Period | YTD"
+msgstr "init | Debito | Credito | Periodo | Acumulado"
+
+#. module: reports_account
+#: selection:wizard.balance.sheet,columns:0
+#: selection:wizard.income.statement,columns:0
+msgid "End. Balance"
+msgstr "Fin. Balance"
+
+#. module: reports_account
+#: view:wizard.balance.sheet:0 view:wizard.income.statement:0
+msgid "Print"
+msgstr "Imprimir"
+
+#. module: reports_account
+#: field:wizard.balance.sheet,date_from:0
+#: field:wizard.income.statement,date_from:0
+msgid "Start date"
+msgstr "Fecha Inicial"
+
+#. module: reports_account
+#: field:wizard.balance.sheet,inf_type:0
+#: field:wizard.income.statement,inf_type:0
+msgid "Type"
+msgstr "Tipo"
+
+#. module: reports_account
+#: code:addons/reports_account/balance_sheet_report_parser.py:54
+#: code:addons/reports_account/income_statement_report_parser.py:54
+#, python-format
+msgid " to "
+msgstr "Hasta"
+
+#. module: reports_account
+#: field:wizard.balance.sheet,columns:0
+#: field:wizard.income.statement,columns:0
+msgid "Columns"
+msgstr "Columnas"
+
+#. module: reports_account
+#: selection:account.account,account_category:0
+msgid "Result"
+msgstr "Resultado"
+
+#. module: reports_account
+#: selection:account.account,account_category:0
+msgid "Expense"
+msgstr "Gastos"
+
+#. module: reports_account
+#: code:addons/reports_account/balance_sheet_report_parser.py:63
+#: code:addons/reports_account/income_statement_report_parser.py:63
+#, python-format
+msgid " HASTA "
+msgstr " HASTA "
+
+#. module: reports_account
+#: model:ir.model,name:reports_account.model_wizard_income_statement
+msgid "wizard.income.statement"
+msgstr "wizard.income.statement"
+
+#. module: reports_account
+#: field:wizard.balance.sheet,periods:0
+#: field:wizard.income.statement,periods:0
+msgid "Periods"
+msgstr "Periodos"
+
+#. module: reports_account
+#: selection:wizard.balance.sheet,inf_type:0
+#: selection:wizard.income.statement,inf_type:0
+msgid "Balance Sheet"
+msgstr "Balance General"
+
+#. module: reports_account
+#: selection:account.account,account_category:0
+msgid "Income"
+msgstr "Ingresos"
+
+#. module: reports_account
+#: field:wizard.balance.sheet,company_id:0
+#: field:wizard.income.statement,company_id:0
+msgid "Company"
+msgstr "Compañia"
+
+#. module: reports_account
+#: selection:wizard.balance.sheet,filter:0
+#: selection:wizard.income.statement,filter:0
+msgid "By Period"
+msgstr "Por Periodo"
+
+#. module: reports_account
+#: selection:wizard.balance.sheet,filter:0
+#: selection:wizard.income.statement,filter:0
+msgid "No Filter"
+msgstr "No Filtrar"
+
+#. module: reports_account
+#: selection:wizard.balance.sheet,columns:0
+#: selection:wizard.income.statement,columns:0
+msgid "Initial | Debit | Credit | YTD"
+msgstr "init | Debito | Credito | Acumulado"
+
+#. module: reports_account
+#: selection:account.account,account_category:0
+msgid "Liability"
+msgstr "Pasivo"
+
+#. module: reports_account
+#: selection:wizard.balance.sheet,display_account:0
+#: selection:wizard.income.statement,display_account:0
+msgid "With Balance"
+msgstr "Con Saldos"
+
+#. module: reports_account
+#: view:wizard.balance.sheet:0 view:wizard.income.statement:0
+msgid "Periods to Include"
+msgstr "Periodos a Incluir"
+
+#. module: reports_account
+#: view:wizard.balance.sheet:0 view:wizard.income.statement:0
+msgid "Accounts Info"
+msgstr "Informacion Cuentas"
+
+#. module: reports_account
+#: help:wizard.balance.sheet,display_account_level:0
+#: help:wizard.income.statement,display_account_level:0
+msgid "Display accounts up to this level (0 to show all)"
+msgstr "Mostrar cuentas a este nivel (de 0 a mostrar todos)"
+
+#. module: reports_account
+#: field:wizard.balance.sheet,target_move:0
+#: field:wizard.income.statement,target_move:0
+msgid "Entries to Include"
+msgstr "Entradas a incluir"
+
+#. module: reports_account
+#: model:ir.model,name:reports_account.model_account_account
+msgid "Account"
+msgstr "Cuenta"
+
+#. module: reports_account
+#: selection:wizard.balance.sheet,display_account:0
+#: selection:wizard.income.statement,display_account:0
+msgid "With movements"
+msgstr "Con Movimientos"
+
+#. module: reports_account
+#: view:wizard.balance.sheet:0 view:wizard.income.statement:0
+msgid "_Cancel"
+msgstr "_Cancel"
+
+#. module: reports_account
+#: selection:wizard.balance.sheet,filter:0
+#: selection:wizard.income.statement,filter:0
+msgid "By Date and Period"
+msgstr "Por Fecha y Periodo"
+
+#. module: reports_account
+#: selection:wizard.balance.sheet,target_move:0
+#: selection:wizard.income.statement,target_move:0
+msgid "All Posted Entries"
+msgstr "Todos los movimientos asentados"
+
+#. module: reports_account
+#: code:addons/reports_account/balance_sheet_report_parser.py:63
+#: code:addons/reports_account/income_statement_report_parser.py:63
+#, python-format
+msgid "DE "
+msgstr "DE "
+
+#. module: reports_account
+#: selection:wizard.balance.sheet,inf_type:0
+#: selection:wizard.income.statement,inf_type:0
+msgid "Income Statement"
+msgstr "Estado de Resultados"
+
+#. module: reports_account
+#: help:wizard.balance.sheet,fiscalyear:0
+#: help:wizard.income.statement,fiscalyear:0
+msgid "Fiscal Year for this report"
+msgstr "Año fiscal para este reporte"
+
+#. module: reports_account
+#: help:wizard.balance.sheet,periods:0 help:wizard.income.statement,periods:0
+msgid "All periods in the fiscal year if empty"
+msgstr "Todos los períodos en el año fiscal si está vacío"
+
+#. module: reports_account
+#: code:addons/reports_account/balance_sheet_report_parser.py:273
+#: code:addons/reports_account/income_statement_report_parser.py:273
+#, python-format
+msgid "The Selected Fiscal Year Does not have Regular Periods"
+msgstr "El año fiscal seleccionado no tiene períodos regulares"
+
+#. module: reports_account
+#: selection:wizard.balance.sheet,filter:0
+#: selection:wizard.income.statement,filter:0
+msgid "By Date"
+msgstr "Por fecha"
+
+#. module: reports_account
+#: code:addons/reports_account/balance_sheet_report_parser.py:54
+#: code:addons/reports_account/income_statement_report_parser.py:54
+#, python-format
+msgid "From "
+msgstr "De"
+
+#. module: reports_account
+#: view:wizard.balance.sheet:0 view:wizard.income.statement:0
+msgid "Company Info"
+msgstr "Informacion Compañia"
+
+#. module: reports_account
+#: field:account.account,account_category:0
+msgid "Category Account"
+msgstr "Categoria de Cuenta"
+
+#. module: reports_account
+#: help:wizard.balance.sheet,target_move:0
+#: help:wizard.income.statement,target_move:0
+msgid "Print All Accounting Entries or just Posted Accounting Entries"
+msgstr ""
+"Imprimir todos los asientos contables o sólo las entradas de Contabilidad "
+"Publicado"
+
+#. module: reports_account
+#: field:wizard.balance.sheet,lab_str:0
+#: field:wizard.income.statement,lab_str:0
+msgid "Description"
+msgstr "Descripcion"
+
+#. module: reports_account
+#: code:addons/reports_account/balance_sheet_report_parser.py:273
+#: code:addons/reports_account/income_statement_report_parser.py:273
+#, python-format
+msgid "UserError"
+msgstr "ErrorUser"
+
+#. module: reports_account
+#: field:wizard.balance.sheet,date_to:0
+#: field:wizard.income.statement,date_to:0
+msgid "End date"
+msgstr "Fecha Final"
+
+#. module: reports_account
+#: model:ir.model,name:reports_account.model_wizard_balance_sheet
+msgid "wizard.balance.sheet"
+msgstr "wizard.balance.sheet"
+
+#. module: reports_account
+#: model:ir.actions.act_window,name:reports_account.action_income_statement
+#: model:ir.actions.report.xml,name:reports_account.income_statement_report_mako
+#: model:ir.ui.menu,name:reports_account.submenu_income_statement_wizard
+#: view:wizard.income.statement:0
+msgid "Estado de Resultados"
+msgstr "Estado de Resultados"
+
+#. module: reports_account
+#: selection:wizard.balance.sheet,display_account:0
+#: selection:wizard.income.statement,display_account:0
+msgid "All Accounts"
+msgstr "Todas las Cuentas"
+
+#. module: reports_account
+#: field:wizard.balance.sheet,filter:0 field:wizard.income.statement,filter:0
+msgid "Date/Period Filter"
+msgstr "Fecha/Periodo Filtrado"
+
+#. module: reports_account
+#: help:wizard.balance.sheet,tot_check:0
+#: help:wizard.income.statement,tot_check:0
+msgid ""
+"Checking will add a new line at the end of the Report which will Summarize "
+"Columns in Report"
+msgstr ""
+"Comprobación agregará una nueva línea al final del informe que resumirá las "
+"columnas en el Informe"
+
+#. module: reports_account
+#: view:wizard.balance.sheet:0 view:wizard.income.statement:0
+msgid "or"
+msgstr "o"
+
+#. module: reports_account
+#: view:wizard.balance.sheet:0 view:wizard.income.statement:0
+msgid "FiscalYear Info"
+msgstr "Informacion Año Fiscal"
+
+#. module: reports_account
+#: field:wizard.balance.sheet,currency_id:0
+#: field:wizard.income.statement,currency_id:0
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: reports_account
+#: field:wizard.balance.sheet,fiscalyear:0
+#: field:wizard.income.statement,fiscalyear:0
+msgid "Fiscal year"
+msgstr "Año Fiscal"
+
+#. module: reports_account
+#: selection:account.account,account_category:0
+msgid "Cost"
+msgstr "Costo"
+
+#. module: reports_account
+#: help:wizard.balance.sheet,lab_str:0 help:wizard.income.statement,lab_str:0
+msgid "Description for the Summary"
+msgstr "Descripcion para el resumen"
+
+#. module: reports_account
+#: field:wizard.balance.sheet,display_account:0
+#: field:wizard.income.statement,display_account:0
+msgid "Display accounts"
+msgstr "Mostrar Cuentas"
+
+#. module: reports_account
+#: field:wizard.balance.sheet,display_account_level:0
+#: field:wizard.income.statement,display_account_level:0
+msgid "Up to level"
+msgstr "Hasta Nivel"
+
+#. module: reports_account
+#: selection:wizard.balance.sheet,columns:0
+#: selection:wizard.income.statement,columns:0
+msgid "12 Months | YTD"
+msgstr "12 Meses | YTD"
+
+#. module: reports_account
+#: view:wizard.balance.sheet:0 view:wizard.income.statement:0
+msgid "Total"
+msgstr "Total"
+
+#. module: reports_account
+#: help:wizard.balance.sheet,currency_id:0
+#: help:wizard.income.statement,currency_id:0
+msgid ""
+"Currency at which this report will be expressed. If not selected will be "
+"used the one set in the company"
+msgstr ""
+"Moneda en la que se expresará el presente informe. Si no está seleccionado "
+"se utilizará el conjunto de la empresa"
+
+#. module: reports_account
+#: field:wizard.balance.sheet,tot_check:0
+#: field:wizard.income.statement,tot_check:0
+msgid "Summarize?"
+msgstr "Totalizar ?"
+
+#. module: reports_account
+#: selection:wizard.balance.sheet,target_move:0
+#: selection:wizard.income.statement,target_move:0
+msgid "All Entries"
+msgstr "Todos los asientos"
+
+#. module: reports_account
+#: selection:wizard.balance.sheet,columns:0
+#: selection:wizard.income.statement,columns:0
+msgid "Debit | Credit"
+msgstr "Debito | Credito"

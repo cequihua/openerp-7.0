@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <record model="ir.ui.view" id="account_reports_account_form_inherit_view">
+        <field name="name">account.report.account.form.inherit</field>
+        <field name="model">account.account</field>
+        <field name="inherit_id" ref="account.view_account_form"/>
+        <field name="arch" type="xml">
+              <xpath expr="/form/group/group/field[@name='user_type']" position="after">
+                  <field name="account_category"/>
+              </xpath>
+        </field>
+    </record>
+</data>
+</openerp>
