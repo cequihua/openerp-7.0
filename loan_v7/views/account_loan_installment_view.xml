@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>		
+		<record model="ir.ui.view" id="view_account_loan_installment_form">
+					<field name="name">account.loan.installment.form</field>
+					<field name="model">account.loan.installment</field>
+					<field name="type">form</field>
+					<field name="arch" type="xml">
+						<form string="Installments">
+							<field name="loan_id" select="1" string="Prestamo ID" domain="[('partner_id','=',partner_id)]"/>
+							<field name="name" select="1"/>
+							<field name="cheque_id" select="1" domain="[('loan_id','=',loan_id)]"/>
+							<field name="capital" select="1"/>
+							<field name="interest" select="1"/>
+							<field name="total" select="1"/>
+						</form>
+					</field>
+				</record>
+
+				<record model="ir.ui.view" id="view_account_loan_installment_tree2">
+					<field name="name">account.loan.installment.tree</field>
+					<field name="model">account.loan.installment</field>
+					<field name="type">tree</field>
+					<field name="arch" type="xml">
+						<tree string="Installments">
+							<field name="loan_id" select="1" domain="[('partner_id','=',partner_id)]"/>
+							<field name="name" select="1"/>
+							<field name="cheque_id" select="1" domain="[('loan_id','=',loan_id)]"/>
+							<field name="capital" select="1"/>
+							<field name="interest" select="1"/>
+							<field name="total" select="1"/>
+						</tree>
+					</field>
+				</record>
+				<record model="ir.actions.act_window" id="action_account_loan_installment_form">
+					<field name="name">account.loan.installment</field>
+					<field name="res_model">account.loan.installment</field>
+					<field name="view_type">form</field>
+					<field name="view_mode">tree,form</field>
+					<field name="help" type="html">
+						<p class="oe_view_nocontent_create">Create Installment</p>
+					</field>
+				</record>
+
+				<!-- <menuitem name="Installment" id="menu_account_loan_installment_form" action="action_account_loan_installment_form"  parent="main_menu_config"/> -->
+			</data>
+		</openerp>

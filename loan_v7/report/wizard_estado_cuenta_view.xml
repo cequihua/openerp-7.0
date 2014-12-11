@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+            <record id="view_estado_cuenta_report_wizard" model="ir.ui.view">
+                  <field name="name">estado_de_cuenta_mensual</field>
+                  <field name="model">wizard.estadocuenta.account.loan.report</field>
+                  <field name="arch" type="xml">
+                    <form string="Estado de Cuenta Mensual" version="7.0">
+                        <group>
+                        	  <field name="loan_id"/>
+                            <field name="periodo_id"/>
+                        </group>
+                        <footer>
+                             <button name="print_report" string="Imprimir" type="object" icon="gtk-print" class="oe_highlight"/>
+                             <button icon="gtk-cancel" special="cancel" string="Cancelar"/>
+                        </footer>                
+                    </form>
+                  </field>
+            </record>
+
+            <record model="ir.actions.act_window" id="action_report_estado_cuenta">
+                <field name="name">Estado de Cuenta Mensual</field>
+                <field name="res_model">wizard.estadocuenta.account.loan.report</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">form</field>
+                <field name="target">new</field>
+            </record>
+
+            <menuitem id="submenu_report_estado_cuenta" name="Estado de Cuenta Mensual" action="action_report_estado_cuenta" parent="main_menu"/>
+
+            <record id="view_general_report_wizard" model="ir.ui.view">
+                  <field name="name">loan_reporte_general</field>
+                  <field name="model">wizard.general.loan.report</field>
+                  <field name="arch" type="xml">
+                    <form string="Reporte General" version="7.0">
+                        <group>
+                            <field name="name"/>
+                            <field name="fecha_ini"/>
+                            <field name="fecha_fin"/>
+                        </group>
+                        <footer>
+                             <button name="print_report" string="Imprimir" type="object" icon="gtk-print" class="oe_highlight"/>
+                             <button icon="gtk-cancel" special="cancel" string="Cancelar"/>
+                        </footer>                
+                    </form>
+                  </field>
+            </record>
+
+            <record model="ir.actions.act_window" id="action_report_general">
+                <field name="name">Reporte General</field>
+                <field name="res_model">wizard.general.loan.report</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">form</field>
+                <field name="target">new</field>
+            </record>
+
+            <menuitem id="submenu_report_general" name="Reporte de Trazabilidad" action="action_report_general" parent="main_menu"/>
+  </data>
+</openerp>

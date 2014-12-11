@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+  <record model="ir.ui.view" id="petreo_warehouse_form_inherit_view">
+    <field name="name">petreo.stock.warehouse.form.inherit</field>
+    <field name="model">stock.warehouse</field>
+    <field name="inherit_id" ref="stock.view_warehouse"/>
+    <field name="arch" type="xml">
+         <!--<xpath expr="/group/group/field[@name='lot_output_id']" position="after">
+           <field name="centro_costo_id"/>
+        </xpath>
+        <field name="lot_output_id" position="after">
+            <field name="centro_costo_id"/>
+        </field -->
+        <xpath expr="//field[@name='partner_id']" position="before">
+            <field name="centro_costo_id"/>
+        </xpath>
+    </field>
+    </record>
+
+  </data>
+</openerp>

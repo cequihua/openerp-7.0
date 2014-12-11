@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+  <record model="ir.ui.view" id="petreo_mrp_production_form_inherit_view">
+    <field name="name">petreo.mrp.production.form.inherit</field>
+    <field name="model">mrp.production</field>
+    <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+    <field name="arch" type="xml">
+          <xpath expr="/form/sheet/group/group/field[@name='origin']" position="after">
+              <field name="pista"/>
+          </xpath>
+    </field>
+  </record>
+</data>
+</openerp>

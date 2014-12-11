@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+<!-- 	 <report string="Loan Paper"
+	   		model="account.loan"
+	 	 	name="letter.letter_info"
+	 	  	id="letter_letter_info"
+	 	   	rml="loan_v7/report/merge_letter.rml"
+	 	   	auto="False"/>
+
+	 <report string="Loan Details"
+	   		model="account.loan"
+	 	 	name="account.loan"
+	 	  	id="account.loan"
+	 	   	rml="loan_v7/report/loan_info.rml"
+	 	   	auto="False"/> -->
+
+	 <report string="Estado de Cuenta Mensual"
+	 		auto="False"
+	   		model="account.loan"
+	 	 	name="estadocuenta.account.loan"
+	 	  	id="estadocuenta_report_account_loan"
+	 	   	file="loan_v7/report/estado_cuenta.mako"
+	 	   	report_type="webkit" />
+
+	<report string="Reporte de Trazabilidad"
+	 		auto="False"
+	   		model="account.loan"
+	 	 	name="general.account.loan"
+	 	  	id="general_account_loan"
+	 	   	file="loan_v7/report/general_report.mako"
+	 	   	report_type="webkit" />
+	</data>
+</openerp>

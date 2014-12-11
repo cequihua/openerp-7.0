@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<report id="report_losa_stock_piking_webkit"
+		model="stock.picking"
+		name="stock.losa.picking.report"
+		file="petreo/reports/remision_losa_stock_picking_report.mako"
+		string="Remision de Losa"
+		report_type="webkit"
+		auto="False" menu="True"/>
+	</data>
+</openerp>

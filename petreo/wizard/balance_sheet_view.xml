@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+            <record model="ir.ui.view" id="view_petreo_balance_sheet_wizard">
+                  <field name="name">petreo.balance.sheet.wizard.view</field>
+                  <field name="model">wizard.balance.sheet</field>
+                  <field name="type">form</field>
+                  <field name="arch" type="xml">
+                      <form string="Reporte General" version="7.0">
+                        <field name="company_id"/>
+                            <!-- <header>
+                                <button 
+                                    name="print_report" 
+                                    string="Print" 
+                                    type="object"
+                                    class="oe_highlight" />
+                                or
+                                <button 
+                                    type='special'
+                                    special='cancel'
+                                    string='_Cancel'
+                                    class="oe_link" />
+                            </header>
+                        <group>
+                            <group string="Company Info">
+                                <label for="company_id"/>
+                                <field name="company_id" nolabel="1"/>
+                                <field name="currency_id" domain="[('company_id','=',company_id)]" />
+                            </group>
+                            <group string="Report Info">
+                                <field name="columns" />
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Accounts Info">
+                                <field name="display_account" required="True" />
+                                <field name="target_move"/>
+                            </group>
+                            <group string="FiscalYear Info">
+                                <field name="fiscalyear" domain="[('company_id','=',company_id)]"/>
+                                <newline/>
+                            </group>
+                        </group>
+                        <group >
+                            <group string="Periods to Include">
+                                <field 
+                                    name="periods" 
+                                    nolabel="1" 
+                                    domain="[('fiscalyear_id','=',fiscalyear),('company_id','=',company_id)]"
+                                     attrs="{'readonly':[('columns','in',('qtr','thirteen'))],}">
+                                    <tree>
+                                        <field name='code'/>
+                                        <field name='name'/>
+                                        <field name='state'/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </group>
+
+                        <group>
+                            <group string="Total" >
+                                <field name="tot_check" />
+                                <field name="lab_str"  attrs="{'required':[('tot_check','=',True)], 'readonly':[('tot_check','=',False)],}" />
+                            </group>
+                            <group string=" " >
+                            </group>
+                        </group> -->
+                    </form>
+                </field>
+            </record>
+
+            <record model="ir.actions.act_window" id="action_petreo_balance_sheet">
+                <field name="name">petreo_balance_sheet_action</field>
+                <field name="res_model">wizard.balance.sheet</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">form</field>
+                <field name="target">new</field>
+            </record>
+
+            <menuitem id="submenu_petreo_balance_sheet_wizard" name="Balance General" action="action_petreo_balance_sheet" 
+              parent="account.final_accounting_reports"  groups="account_financial_report.group_afreport"/>
+
+    </data>
+</openerp>

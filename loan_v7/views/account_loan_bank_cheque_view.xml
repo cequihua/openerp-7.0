@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_account_loan_bank_cheque_form">
+			<field name="name">account.loan.bank.cheque.form</field>
+			<field name="model">account.loan.bank.cheque</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Cheque Details">
+					<field name="name" select="1"/>
+					<field name="code" select="1"/>
+					<field name="partner_id" on_change="onchange_bank_id(partner_id)" select="1"/>
+					<field name="loan_id" domain="[('partner_id','=',partner_id)]" select="1"/>
+					<field name="loan_bank_id" domain="[('partner_id','=',partner_id)]" select="1"/>
+					<field name="account_id" select="1"/>
+					<field name="cheque_amount" select="1"/>
+					<field name="date" select="1"/>
+					<field name="clear_date" select="1"/>
+					<field name="return_date" select="1"/>
+					<field name="loan" select="1"/>
+					<field name="interest" select="1"/>
+					<field name="voucher_id" select="1"/>
+					<newline/>
+					<field name='note' colspan='7'/>
+					<group col="8" colspan="4">
+						<field name="state"/>
+						<button name="post_bank" states="draft" string="Post to Bank" />
+						<button name="cheque_cancel" states="draft" string="Cancel"/>
+						<button name="cheque_clear" states="posted" string="Clear"/>
+						<button name="cheque_retun" states="posted" string="Bounce"/>
+						<button name="cheque_cancel" states="return" string="Cancel"/>
+						<button name="set_draft" states="cancel" string="Set to Draft"/>
+					</group>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_account_loan_bank_cheque_tree">
+			<field name="name">account.loan.bank.cheque.tree</field>
+			<field name="model">account.loan.bank.cheque</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Cheque Details" editable="top">
+					<field name="name"/>
+					<field name="code"/>
+					<field name="partner_id" on_change="onchange_bank_id(partner_id)"/>
+					<field name="loan_id" domain="[('partner_id','=',partner_id)]"/>
+					<field name="loan_bank_id" domain="[('partner_id','=',partner_id)]"/>
+					<field name="account_id" domain="[('bank_id','=',loan_bank_id)]"/>
+					<field name="cheque_amount"/>
+					<field name="date"/>
+					<field name="state"/>
+					<field name="clear_date"/>
+					<field name="return_date"/>
+				</tree>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_account_loan_bank_cheque">
+			<field name="name">account.loan.bank.cheque</field>
+			<field name="res_model">account.loan.bank.cheque</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create Cheque</p>
+			</field>
+		</record>
+
+		<!-- <menuitem name="Cheque" id="menu_account_loan_bank_cheque_form" action="action_account_loan_bank_cheque"  parent="main_menu_config"/> -->
+
+		<record model="ir.actions.act_window" id="action_account_loan_bank_cheque_draft">
+			<field name="name">account.loan.bank.cheque</field>
+			<field name="res_model">account.loan.bank.cheque</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[('state','=','draft'),('date','=',time.strftime('%Y-%m-%d'))]</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create Draft</p>
+			</field>
+		</record>
+		<!-- <menuitem name="Draft" id="menu_action_account_loan_bank_cheque_draft" action="action_account_loan_bank_cheque_draft"  parent="main_menu_config"/> -->
+
+		<record model="ir.actions.act_window" id="action_account_loan_bank_cheque_posted">
+			<field name="name">account.loan.bank.cheque</field>
+			<field name="res_model">account.loan.bank.cheque</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[('state','=','posted'),('date','=',time.strftime('%Y-%m-%d'))]</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create Posted</p>
+			</field>
+		</record>
+		<!-- <menuitem name="Posted" id="menu_action_account_loan_bank_cheque_posted" action="action_account_loan_bank_cheque_posted"  parent="main_menu_config"/> -->
+	</data>
+</openerp>

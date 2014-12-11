@@ -1,0 +1,145 @@
+## -*- coding: utf-8 -*-
+<html>
+<head>
+	<style type="text/css">
+		${css}
+			body{
+				font-family: Arial Narrow;
+			}
+
+			table {
+				font-size: 12px;
+				width: 100%;
+				border:1px;
+				border-width: 1px;
+				border-collapse: collapse;
+			}
+			.titulo{
+				background-color: black;
+				font-weight: bold;
+				color:white;
+				text-align: center;
+			}
+			.titulo2{
+				background-color: black;
+				font-weight: bold;
+				color:white;
+				text-align: left;
+			}
+			.center{
+				text-align: center;
+			}
+			.text_left{
+				text-align: right;
+			}
+			.text_center{
+				text-align: center;
+				font-weight: bold;
+			}
+		</style>
+</head>
+<body>
+%for o in get_loan(data):
+	<table border="1px">
+		<caption>ESTADO DE CUENTA MENSUAL</caption>
+		<tr>
+			<td rowspan="12" colspan="2" style="font-weight: bold;">
+				<b>RFC:</b> AXR4535353<br/>
+				<b>No. Cuenta:</b> 645454545454454<br/>
+				<b>No. Cliente:</b> 324455<br/>
+				<br/>
+				Nombre: ${o.partner_id.name}<br/>
+				Domicilio: ${o.partner_id.street}<br/>
+				Ciudad: ${o.partner_id.city} <br/>
+				Estado: ${o.partner_id.country_id.name} <br/>
+				CP: ${o.partner_id.zip}
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="titulo"><center>CREDITO</center></td>
+		</tr>
+		<tr>
+			<td colspan="2"><center>${o.loan_id}</center></td>
+		</tr>
+		<tr>
+			<td colspan="2" class="titulo"><center>FECHA</center></td>
+		</tr>
+		<tr>
+			<td colspan="2"><center>${o.apply_date}</center></td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		%for p in get_loan_payment(data):
+		<tr style="font-size: 16px; font-weight: bold;">
+			<td>PAGO MINIMO</td>
+			<td>${p.pago_capital}</td>
+		</tr>
+		<tr class="titulo2">
+			<td>FECHA LIMITE DE PAGO</td>
+			<td>${p.fecha}</td>
+		</tr>
+		<tr class="text_left">
+			<td>CAPITAL</td>
+			<td>${p.pago_mes}</td>
+		</tr>
+		<tr class="text_left">
+			<td>INTERESES</td>
+			<td>${p.interes}</td>
+		</tr>
+		<tr class="text_left">
+			<td>IVA</td>
+			<td>${p.interes * 0.16}</td>
+		</tr>
+		<tr class="titulo2">
+			<td>SALDO ACTUAL AL CORTE</td>
+			<td>${p.saldo}</td>
+		</tr>
+		% endfor
+		<tr>
+			<td>MONTO</td>
+			<td>${o.loan_amount}</td>
+			<td class="text_left">SALDO CAPITAL</td>
+			<td class="text_left">${get_capital_total(data)}</td>
+		</tr>
+		<tr>
+			<td>TASA INTERES MENSUAL</td>
+			<td>${o.tasa_int_mensual}<td>
+			<td class="text_left">SALDO INTERESES</td>
+			<td class="text_left">${p.saldo_con_interes}</td>
+		</tr>
+		<tr>
+			<td>CAT</td>
+			<td>${o.cat}</td>
+			<td class="text_left"></td>
+			<td class="text_left"></td>
+		</tr>
+	</table>
+	<table border="1px" summary="">
+		<tr class="titulo">
+			<td colspan="7"><center>RESUMEN DE LA CUENTA</center></td>
+		</tr>
+		<tr class="text_center">
+			<td>FECHA</td>
+			<td>CONCEPTO</td>
+			<td>INTERES</td>
+			<td>IVA</td>
+			<td>CAPITAL</td>
+			<td>PAGO TOTAL</td>
+			<td>SALDO</td>
+		</tr>
+		%for pm in get_loan_payments(data):
+		<tr class="text_center">
+			<td>${pm.fecha}</td>
+			<td>${pm.pago_capital} SU PAGO GRACIAS</td>
+			<td>${pm.interes}</td>
+			<td>${pm.interes * 0.16}</td>
+			<td>${pm.pago_mes}</td>
+			<td>${pm.pago_capital}</td>
+			<td>${pm.saldo}</td>
+		</tr>
+		%endfor
+	</table>
+% endfor
+</body>
+</html>

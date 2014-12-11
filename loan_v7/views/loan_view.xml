@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<menuitem id="main_menu_loan" name="Prestamos" />
+		<menuitem id="main_menu" name="Prestamos" parent="main_menu_loan" />
+		<menuitem id="main_menu_config" name="Configuracion" parent="main_menu_loan" />
+
+		<record model="ir.ui.view" id="view_loan_form">
+			<field name="name">res.partner.form.inherit</field>
+			<field name="model">res.partner</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="base.view_partner_form"/>
+			<field name="arch" type="xml">
+				<field name="lang" position="after">
+					<field name="incom" select="1"/>
+				</field>
+			</field>
+		</record>
+	
+		<record model="ir.ui.view" id="view_loan_partner_bank_form">
+			<field name="name">res.partner.bank.form.inherit</field>
+			<field name="model">res.partner.bank</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="base.view_partner_bank_form"/>
+			<field name="arch" type="xml">
+				<field name="acc_number" position="after">
+					<field name="account_id" select="1"/>
+				</field>
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="account_loan_proof_tree">
+			<field name="name">account.loan.proof.tree</field>
+			<field name="model">account.loan.proof</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Proof Document">
+					<field name="name"/>
+					<field name="note"/>
+					<field name="type"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_account_loan_installment">
+			<field name="name">account.loan.installment.tree</field>
+			<field name="model">account.loan.installment</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Installments" editable="top">
+					<field name="name"/>
+					<field name="cheque_id"/>
+					<field name="capital"/>
+					<field name="interest"/>
+					<field name="total"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="account_loan_tree">
+			<field name="name">account.loan.tree</field>
+			<field name="model">account.loan</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Invoice Line">
+					<field name="loan_id"/>
+					<field name="auto_id"/>
+					<field name="name"/>
+					<field name="partner_id"/>
+					<field name="contact"/>
+					<field name="loan_amount"/>
+					<field name="total_installment"/>
+					<field name="apply_date"/>
+					<field name="approve_date"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_loan_payment">
+			<field name="name">loan.payment.tree</field>
+			<field name="model">loan.payment</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Tabla de Amortizaciones">
+					<field name="loan_id" string="Credito"/>
+					<field name="no_mes"/>
+					<field name="fecha" string="Fecha"/>
+					<field name="capital"/>
+					<field name="interes"/>
+					<field name="saldo_con_interes"/>
+					<field name="capital_mes"/>
+					<field name="pago_mes"/>
+					<!-- <field name="pago_capital"/> -->
+					<field name="saldo"/>
+					<field name="saldo_pen" string="Saldo Pendiente"/>
+					<field name="state" string="Estado"/>
+				</tree>
+			</field>
+		</record>
+
+<!-- 		<record model="ir.ui.view" id="view_loan_account_invoice">
+			<field name="name">loan.account.invoice.tree</field>
+			<field name="model">account.invoice</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="number"/>
+					<field name="date_invoice"/>
+					<field name="amount_untaxed"/>
+					<field name="amount_tax"/>
+					<field name="amount_total"/>
+					<field name="residual"/>
+				</tree>
+			</field>
+		</record> -->
+
+		<record model="ir.ui.view" id="account_loan_form">
+			<field name="name">account.loan.form</field>
+			<field name="model">account.loan</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Loan Details" version="7.0">
+					<header>
+						<!-- <group col="10" colspan="4">
+ 							    <field name="return_type"/> -->
+								<field name="state" readonly="1" select="1" widget="statusbar"/>
+
+								<button name="loan_draft" states="cancel" string="Re Apply" type="workflow"/>
+								<button name="proof_approval" string="Calcular Amortizaciones" type="object"/>
+								<!-- <button name="approve_finance" string="Evaluar" type="workflow"/> -->
+								<button name="approve_finance" string="Evaluar" type="object"/>
+								<button name="create_policy" string="Autorizar" type="object"/>
+								<!-- <button name="loan_paid" string="Loan Paid" type="object"/> -->
+								<button name="cancel" string="Cancelar" type="object"/>
+								
+								<!-- <button name="loan_draft" states="cancel" string="Re Apply" type="workflow"/>
+								<button name="proof_approval" states="draft, apply" string="Approve Proofs" type="object"/>
+								<button name="approve_finance" states="proof approval" string="Approve By Finance" type="workflow"/>
+								<button name="apply_loan" states="apply" string="Final Approvel" type="object"/>
+								<button name="loan_paid" states="apply,proof approval,approved" string="Loan Paid" type="object"/>
+								<button name="reject_loan" states="apply,approved,proof approval" string="Reject Loan" type="object"/> -->
+<!-- 							</group> -->
+					</header>
+					<sheet>
+				    <separator string="General Information" colspan="4"/>
+				    <group colspan="2">
+				    	<group>
+							<field name="loan_id" select="1"/>
+							<field name="name" select="1"/>
+							<field name="apply_date" select="1"/>
+						</group>
+						<group>
+							<field name="approve_date" string="Fecha Aprobacion" select="1"/>
+							<field name="return_type"/>
+							<field name="partner_id" select="1"  on_change="onchange_partner_id(partner_id)" />
+						</group>
+					</group>
+					<notebook colspan="4">
+						<page string="Loan">
+    						<group colspan="2">
+    							<group>
+	    							<field name="interest_rate" string="Interes Anual" select="1"/>
+	    							<field name="tasa_int_mensual"/>
+	    							<field name="tasa_int_periodo"/>
+	    							<field name="process_fee" select="1" invisible="1"/>
+	    							<field name="cat"/>
+    							</group>
+    							<group>
+	    							<field name="contact" select="1" domain="[('partner_id','=',partner_id)]" invisible="1"/>
+	    							<field name="loan_amount" string="Monto" select="1"/>
+	    							
+	    							<field name="loan_period" select="1" string="Plazo" on_change="onchange_loan_period(loan_period)"/>
+	    							<field name="total_installment" string="Meses" select="1"/>
+	    							<field name="loan_type" select="1"  invisible="1"/>
+	    							
+	    							<field name="approve_amount" select="1" invisible="1"/>
+    							</group>
+                            </group>
+							<separator string="Tabla de Amortizaciones" colspan="4"/>
+							<field name="payment_ids">
+<!-- 								<tree>
+									<field name="no_mes"/>
+									<field name="capital"/>
+									<field name="interes"/>
+									<field name="pago_capital"/>
+									<field name="saldo"/>
+								</tree> -->
+							</field>
+						</page>
+						<page string="Contabilidad">
+                    		<group>
+                    			<field name="loan_acc"/>
+                    			<field name="cus_pay_acc" string="Linea Credito"/>
+                    			<field name="int_acc"/>  
+	                        	<field name="bank_acc"/>
+	                        	<field name="cob_acc"/>
+                        	</group>                  	
+                        </page>	
+						<!-- <page string="Pagos">
+								<field name="invoice_ids"/>
+						</page> -->
+						<!-- <page string="Proofs">
+							<group>
+								<field name="id" invisible="1"/>
+								<field name="proof_id" colspan="4" nolabel="1" context="{'loan_id': id}" />
+								<field name="proof_1" select="1"/>
+								<field name="proof_2" select="2"/>
+							</group>
+						</page> -->
+                    	<!-- <page string="Accounting">
+                    		<group>
+	                        	<field name="cus_pay_acc"/>
+	                        	<field name="bank_acc"/>
+	                        	<newline/>
+	                        	<field name="int_acc"/>
+	                        	<field name="anal_acc"/>
+	                        	<field name="proc_fee"/>                        	
+	                        	<newline/> 
+                        	</group>
+                        	<field name="move_id" colspan="4" nolabel="1"/>                    	
+                        </page>					
+                        
+						<page string="Cheque Details">
+							<separator string="Invoicing Information" colspan="4"/>
+							<group>
+								<field name="voucher_id"  />
+								<newline/>
+							</group>
+							<separator string="BankChaques Information" colspan="4"/>
+							<field name="cheque_ids" select="1" nolabel="1" colspan="4"/>
+						</page>
+                        
+						<page string="Notes">
+						    <separator string="Terms and Confitions" colspan="4"/>
+							<field name="notes" colspan="4" nolabel="1"/>
+						</page>
+						
+						<page string="EMI Calculator">
+							<group>
+								<field name="loan_amt"/>
+								<newline/>
+								<field name="month"/>
+								<newline/>
+								<field name="int_rate"/>
+								<newline/>
+							
+								<separator string="Monthly Payment (EMI)" colspan="4"/>	
+							
+								<group colspan="1" >				
+									<button name="cal_amt"  string="Calculate" type="object"/>
+									<button name="re_set"  string="Reset" type="object"/>
+								</group>
+								
+								<newline/>				
+								<field name="emi_cal"/>
+								<newline/>
+								<field name="tot_amt"/>
+								<newline/>
+								<field name="flat_pa"/>
+								<newline/>
+								<field name="flat_pm"/>
+								<newline/>	
+								<field name="tot_int_amt"/>
+								<newline/>	
+								<field name="yr_int_amt"/>
+								<newline/>	
+							</group>											
+						</page>		 -->				
+					</notebook>
+				</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="loan_payment_form">
+			<field name="name">loan.payment.form</field>
+			<field name="model">loan.payment</field>
+			<field name="arch" type="xml">
+				<form string="Amortizaciones" version="7.0">
+					<header>
+						<field name="state" readonly="1" select="1" widget="statusbar"/>
+						<button name="create_invoice_pay" string="Crear Factura" type="object"/>
+						<button name="calculate_int" string="Recalcular intereses" type="object"/>
+					</header>
+					<sheet>
+						<group colspan="2">
+						    <group>
+								<field name="loan_id"  string="Credito"/>
+								<field name="fecha" string="Fecha Corte"/>
+								<field name="no_mes"/>
+								<field name="saldo_pen" string="Saldo Pendiente"/>
+							</group>
+							<group>
+								<field name="capital"/>
+								<field name="interes"/>
+								<field name="saldo_con_interes"/>
+								<field name="capital_mes"/>
+								<field name="pago_mes"/>
+								<!-- <field name="pago_capital"/> -->
+								<field name="saldo"/>
+							</group>
+						</group>
+						<notebook>
+							<page string="Factura">
+								<field name="invoice_ids"/>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_payment_loan_form">
+			<field name="name">Amortizaciones</field>
+			<field name="res_model">loan.payment</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Crear Amortizaciones</p>
+			</field>
+		</record>
+
+		<menuitem name="Amortizaciones" id="menu_action_loan_payment_form" action="action_payment_loan_form"  parent="main_menu"/>
+		
+		<record model="ir.ui.view" id="loan_invoice_form_view">
+            <field name="name">account.invoice.loan.inherit.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="/form/sheet/group/group/field[@name='account_id']" position="after">
+            		<field name="loan_id" string="Prestamo"/>
+            	</xpath>
+            </field>
+        </record>
+
+		<record model="ir.actions.act_window" id="action_account_loan_form">
+			<field name="name">Personal Loan</field>
+			<field name="res_model">account.loan</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Crear Prestamos</p>
+			</field>
+		</record>
+
+		<menuitem name="Prestamos" sequence="1" id="menu_action_account_loan_form" action="action_account_loan_form"  parent="main_menu"/>
+
+		<record model="ir.actions.act_window" id="action_account_loan_tree_approve">
+			<field name="name">account.loan</field>
+			<field name="res_model">account.loan</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[('state','!=','approved')]</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create Apprived Loans</p>
+			</field>
+		</record>
+		
+		<!-- <menuitem name="Apprived Loans" id="menu_action_account_loan_tree_approve" action="action_account_loan_tree_approve"  parent="main_menu"/> -->
+		<record model="ir.actions.act_window" id="action_account_loan_tree_small">
+			<field name="name">account.loan</field>
+			<field name="res_model">account.loan</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[('loan_amount','&lt;=','50000')]</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create Small Loans</p>
+			</field>
+		</record>
+		<!-- <menuitem name="Small Loans" id="menu_action_account_loan_tree_small" action="action_account_loan_tree_small"  parent="main_menu"/> -->
+
+		<record model="ir.actions.act_window" id="action_account_loan_tree_mediul">
+			<field name="name">account.loan</field>
+			<field name="res_model">account.loan</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[('loan_amount','&gt;','50000'),('loan_amount','&lt;=','200000')]</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create Medium Loans</p>
+			</field>
+		</record>
+		<!-- <menuitem name="Medium Loans" id="menu_action_account_loan_tree_mediul" action="action_account_loan_tree_mediul" parent="main_menu"/> -->
+
+		<record model="ir.actions.act_window" id="action_account_loan_tree_large">
+			<field name="name">account.loan</field>
+			<field name="res_model">account.loan</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[('loan_amount','&gt;','200000')]</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create Large Loans</p>
+			</field>
+		</record>
+		<!-- <menuitem name="Large Loans" id="menu_action_account_loan_tree_large" action="action_account_loan_tree_large"  parent="main_menu"/> -->
+
+
+		<record model="ir.ui.view" id="loan_account_voucher_view">
+            <field name="name">account.loan.voucher.inherit.form</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_vendor_receipt_dialog_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="/form/group/group/field[@name='partner_id']" position="before">
+            		<field name="loan_payment_id" on_change="onchange_payment(loan_payment_id)"/>
+            		<field name="cap"/>
+            		<field name="int"/>
+            		<field name="saldo_pen" invisible="1"/>
+            		<!-- <field name="iva"/> -->
+            	</xpath>
+        	</field>
+        </record>
+
+        <record model="ir.ui.view" id="_account_loan_invoice_supplier_form_inherit_view">
+    		<field name="name">account.loan.invoice.supplier.form.inherit</field>
+    		<field name="model">account.invoice</field>
+    		<field name="inherit_id" ref="account.invoice_supplier_form"/>
+    		<field name="arch" type="xml">
+          		<xpath expr="/form/sheet/group/group/field[@name='journal_id']" position="after">
+              		<field name="loan_id" required="0" string="Prestamo"/>
+          		</xpath>
+<!--           	<xpath expr="/form/sheet/group/group/field[@name='account_id']" position="after">
+            		<field name="loan_id" string="Prestamo"/>
+            </xpath> -->
+    		</field>
+  		</record>
+	</data>
+</openerp>

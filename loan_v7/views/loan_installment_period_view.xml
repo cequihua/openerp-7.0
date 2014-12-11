@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_loan_installment_period_form">
+			<field name="name">loan.installment.period.form</field>
+			<field name="model">loan.installment.period</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Loan Period">
+					<field name="name" select="1"/>
+					<field name="period" select="1"/>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_loan_installment_period_tree">
+			<field name="name">loan.installment.period.tree</field>
+			<field name="model">loan.installment.period</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Loan Period">
+					<field name="name"/>
+					<field name="period"/>
+				</tree>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_loan_installment_period">
+			<field name="name">loan.installment.period</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">loan.installment.period</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create Loan Period</p>
+			</field>
+		</record>
+		
+		<menuitem name="Periodos" action="action_loan_installment_period" id="menu_loan_installment_period_3" parent="main_menu_config"/>
+	</data>
+</openerp>

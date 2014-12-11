@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="petreo_account_cost_center_tree">
+	        <field name="name">Cost centre Tree</field>
+	        <field name="model">petreo.account.cost.center</field>
+	        <field name="arch" type="xml">
+			<tree string="Centro de Costos">	       
+	        	<field name="name"/>
+	        	<field name="active"/>
+	        </tree>
+	        </field>
+        </record>
+        
+        <record model="ir.ui.view" id="petreo_account_cost_center_form">
+	        <field name="name">Cost centre form</field>
+	        <field name="model">petreo.account.cost.center</field>
+	        <field name="arch" type="xml">
+	        <form string="Centro de Costos" version="7.0">
+	        	<sheet>	
+		        	<group string="Centro de Costos" colspan= "4" col= "4">
+		        		<field name="name"/>
+	        	</sheet>
+	        </form>
+	        </field>
+        </record>
+        
+        <record id="action_petreo_account_cost_view" model="ir.actions.act_window">
+            <field name="name">Centro de Costos Configurator</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">petreo.account.cost.center</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="petreo_account_cost_center_tree"/>
+        </record>
+
+        <menuitem action="action_petreo_account_cost_view"  id="menu_petreo_cost_centre_config" parent="account.menu_finance_accounting" sequence="10"/>
+        
+	</data>
+</openerp>

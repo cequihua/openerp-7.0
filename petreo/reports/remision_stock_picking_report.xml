@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<report id="report_stock_piking_webkit"
+		model="stock.picking"
+		name="stock.picking.report"
+		file="petreo/reports/remision_stock_picking_report.mako"
+		string="Remision de Concreto"
+		report_type="webkit"
+		auto="False" menu="True"/>
+	</data>
+</openerp>

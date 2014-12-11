@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_loan_type_form">
+			<field name="name">account.loan.proof.type.form</field>
+			<field name="model">account.loan.proof.type</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Loan Proof Type">
+					<field name="name" select="1"/>
+					<field name="shortcut" select="1"/>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_loan_type_tree">
+			<field name="name">account.loan.proof.type.tree</field>
+			<field name="model">account.loan.proof.type</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Loan Proof Type">
+					<field name="name" select="1"/>
+					<field name="shortcut" select="1"/>
+				</tree>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_loan_type">
+			<field name="name">account.loan.proof.type</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">account.loan.proof.type</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create Proof Type</p>
+			</field>
+		</record>
+
+		<!-- <menuitem name="Proof Type" action="action_loan_type" id="menu_loan_type" parent="main_menu"/> -->
+	</data>
+</openerp>

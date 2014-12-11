@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<report id="report_sale_order_webkit"
+		model="sale.order"
+		name="sale.order.report"
+		file="quotation_sale_report/report/sale_order_report.mako"
+		string="Cotizacion de Venta Tantums"
+		report_type="webkit"/>
+	</data>
+</openerp>

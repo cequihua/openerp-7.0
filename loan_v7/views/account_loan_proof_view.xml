@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_account_loan_proof_form">
+			<field name="name">account.loan.proof.form</field>
+			<field name="model">account.loan.proof</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Proof Document">
+					<field name="name" select="1"/>
+					<field name="loan_id" invisible="1"/>
+					<field name="type" select="1"/>
+					<newline />
+					<field name="note" select="1" colspan="4"/>
+					<newline />
+					<field name="document" colspan="4"/>
+					<newline />
+					<group col="7" colspan="4">
+						<field name="state" readonly="1" select="1"/>
+						<button name="apply_varification" type="object" states="draft" string="Apply For Varification"/>
+						<button name="proof_varified" type="object" states="apply" string="Accept"/>
+						<button name="proof_canceled" type="object" states="apply" string="Refuse"/>
+					</group>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_account_loan_proof_form">
+			<field name="name">account.account.loan.proof</field>
+			<field name="res_model">account.loan.proof</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_account_loan_proof_tree">
+			<field name="name">account.loan.proof</field>
+			<field name="res_model">account.loan.proof</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create Account Loan Proof</p>
+			</field>
+		</record>
+
+		<!-- <menuitem name="Account Loan Proof" action="action_loan_type" id="menu_loan_type" parent="main_menu_config"/> -->
+	</data>
+</openerp>
